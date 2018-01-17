@@ -5,8 +5,27 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HW_LVL2_7"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        WindowStartupLocation="CenterScreen" 
+        Title="Работники" Loaded="Window_Loaded" Height="450" MinWidth="420"  Width="540">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+        <ScrollViewer Grid.Row="0" Margin="10" Width="400" >
+            <ListView x:Name="listView" ItemsSource="{Binding}" >
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Номер" Width="50" DisplayMemberBinding="{Binding Id, Mode=OneWay}"/>
+                        <GridViewColumn Header="ФИО" Width="140"  DisplayMemberBinding="{Binding FIO}"/>
+                        <GridViewColumn Header="Отдел" Width="100"  DisplayMemberBinding="{Binding Department}"/>
+                        <GridViewColumn Header="Запрлата" Width="90"  DisplayMemberBinding="{Binding Salary}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+        </ScrollViewer>
+        <Button Grid.Row="1" x:Name="AddBtn"  Content="Добавить" Margin="198,0,196,0"/>
+        <Button Grid.Row="1" x:Name="EditBtn"  Content="Редактировать" Width="130" Margin="46,0,316,0"/>
+        <Button Grid.Row="1" x:Name="DelBtn"  Content="Удалить" Width="130" Margin="316,0,46,0"/>
     </Grid>
 </Window>
